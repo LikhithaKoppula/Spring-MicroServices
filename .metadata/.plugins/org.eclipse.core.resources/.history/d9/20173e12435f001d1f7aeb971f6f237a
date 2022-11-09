@@ -1,0 +1,16 @@
+
+    
+zuul:
+  ratelimit:
+    enabled: true
+    behind-proxy: true
+    policy-list:
+      service:
+        - limit: 10
+          refresh-interval: 60
+          type:
+            - user
+            - origin
+            - url
+
+

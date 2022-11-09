@@ -1,0 +1,29 @@
+package com.example.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.VO.ResponseTemplateVO;
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private  UserRepository userRepository;
+
+	public User saveUser(User user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
+	}
+
+	public ResponseTemplateVO getUserwithDepartment(Long userId) {
+		ResponseTemplateVO vo = new ResponseTemplateVO();
+		
+// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+}

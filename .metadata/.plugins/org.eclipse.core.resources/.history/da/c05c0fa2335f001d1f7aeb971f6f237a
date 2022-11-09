@@ -1,0 +1,48 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: USERSERVICE
+        uri:
+          lb://USERSERVICE
+        predicates:
+        - Path=/users/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: USERSERVICE
+            fallbackuri : forward:/userServiceFallback
+      - id: DEPARTMENTSERVICE
+        uri:
+          lb://DEPARTMENTSERVICE
+        predicates:
+        - Path=/departments/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: DEPARTMENTSERVICE
+            fallbackuri : forward:/departmentServiceFallback
+            
+            
+            
+hystrix:
+  command:
+    fallbackcmd :
+      execution :
+        isolation :
+          thread :
+            timeoutInMilliseconds : 4000
+    
+   
+         
+        
+    
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone : https://localhost:8761/eureka/
+#  instance:
+ #    hostname: localhost
+    
